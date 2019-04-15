@@ -10,6 +10,6 @@ Elle utilise des robots Thymio II (https://www.thymio.org/fr%3Athymio), réels o
 
 ## Menu
 
-Les premières étapes proposées (de 1 à 7) proposent de mettre en oeuvre des câblages simples entre capteurs et moteurs, inspirés du formidable livre *Véhicules : Expériences en psychologie synthétique* de Valentino Braitenberg (https://fr.wikipedia.org/wiki/Valentino_Braitenberg).
+Les premières étapes (de 1 à 7) proposent de mettre en oeuvre des câblages simples entre capteurs et moteurs, inspirés du formidable livre *Véhicules : Expériences en psychologie synthétique* de Valentino Braitenberg (https://fr.wikipedia.org/wiki/Valentino_Braitenberg).
 
 On essaie ensuite d'illustrer la complexité de ce qu'il est possible d'obtenir avec des réseaux de neurones, en utilisant des réseaux bouclés simples permettant de coder une mémoire (étapes 8 & 9) et de générer des oscillations (étapes 10 à 12).
