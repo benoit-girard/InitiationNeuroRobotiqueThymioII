@@ -1,0 +1,458 @@
+<!DOCTYPE aesl-source>
+<network>
+
+<!--list of global events-->
+
+<!--list of constants-->
+
+<!--show keywords state-->
+<keywords flag="true"/>
+
+<!--node thymio-II-->
+<node nodeId="51938" name="thymio-II">
+
+var Neurones[2]
+var AncienneValeur[1]
+
+
+onevent prox
+	call leds.top(32,26,6)
+	AncienneValeur[0] = Neurones[0]
+	Neurones[0] = 0
+	if Neurones[0] &lt; 0 then
+		Neurones[0] = 0
+	elseif Neurones[0] &gt; 500 then
+		Neurones[0] = 0
+	end
+	Neurones[1] = 0
+	if Neurones[1] &lt; 0 then
+		Neurones[1] = 0
+	elseif Neurones[1] &gt; 500 then
+		Neurones[1] = 0
+	end
+	call leds.circle(Neurones[0] / 15,0,0,0,Neurones[1] / 15,0,0,0)
+
+
+<toolsPlugins>
+<ThymioBlockly>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="thymio_declare_array" x="188" y="13">
+    <field name="VAR">Neurones</field>
+    <field name="SIZE">2</field>
+  </block>
+  <block type="thymio_declare_array" x="188" y="37">
+    <field name="VAR">AncienneValeur</field>
+    <field name="SIZE">1</field>
+  </block>
+  <block type="thymio_event_update" x="187" y="88">
+    <field name="EVENT">prox</field>
+    <statement name="HANDLER">
+      <block type="thymio_led">
+        <field name="LED">leds.top</field>
+        <field name="COLOR">#ffcc33</field>
+        <next>
+          <block type="thymio_set_array">
+            <field name="VAR">AncienneValeur</field>
+            <value name="INDEX">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="math_number">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="VALUE">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="thymio_get_array">
+                <field name="VAR">Neurones</field>
+                <value name="INDEX">
+                  <shadow type="math_number">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="math_number">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="thymio_set_array">
+                <field name="VAR">Neurones</field>
+                <value name="INDEX">
+                  <shadow type="math_number">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="math_number">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="VALUE">
+                  <shadow type="math_number">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="controls_if">
+                    <mutation elseif="1"></mutation>
+                    <value name="IF0">
+                      <shadow type="logic_boolean">
+                        <field name="BOOL">TRUE</field>
+                      </shadow>
+                      <block type="thymio_compare">
+                        <field name="OP">LT</field>
+                        <value name="A">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="thymio_get_array">
+                            <field name="VAR">Neurones</field>
+                            <value name="INDEX">
+                              <shadow type="math_number">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="math_number">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="thymio_set_array">
+                        <field name="VAR">Neurones</field>
+                        <value name="INDEX">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="VALUE">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="thymio_compare">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="thymio_get_array">
+                            <field name="VAR">Neurones</field>
+                            <value name="INDEX">
+                              <shadow type="math_number">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="math_number">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="thymio_set_array">
+                        <field name="VAR">Neurones</field>
+                        <value name="INDEX">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="VALUE">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="thymio_set_array">
+                        <field name="VAR">Neurones</field>
+                        <value name="INDEX">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="math_number">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <value name="VALUE">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="controls_if">
+                            <mutation elseif="1"></mutation>
+                            <value name="IF0">
+                              <shadow type="logic_boolean">
+                                <field name="BOOL">TRUE</field>
+                              </shadow>
+                              <block type="thymio_compare">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="thymio_get_array">
+                                    <field name="VAR">Neurones</field>
+                                    <value name="INDEX">
+                                      <shadow type="math_number">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="math_number">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="thymio_set_array">
+                                <field name="VAR">Neurones</field>
+                                <value name="INDEX">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                                <value name="VALUE">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <value name="IF1">
+                              <block type="thymio_compare">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="thymio_get_array">
+                                    <field name="VAR">Neurones</field>
+                                    <value name="INDEX">
+                                      <shadow type="math_number">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="math_number">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">500</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO1">
+                              <block type="thymio_set_array">
+                                <field name="VAR">Neurones</field>
+                                <value name="INDEX">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                                <value name="VALUE">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="thymio_led_circle">
+                                <value name="CIRCLE0">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="thymio_arithmetic">
+                                    <field name="OP">/</field>
+                                    <value name="A">
+                                      <shadow type="math_number">
+                                        <field name="NUM">1</field>
+                                      </shadow>
+                                      <block type="thymio_get_array">
+                                        <field name="VAR">Neurones</field>
+                                        <value name="INDEX">
+                                          <shadow type="math_number">
+                                            <field name="NUM">0</field>
+                                          </shadow>
+                                          <block type="math_number">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <shadow type="math_number">
+                                        <field name="NUM">1</field>
+                                      </shadow>
+                                      <block type="math_number">
+                                        <field name="NUM">15</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE1">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE2">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE3">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE4">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="thymio_arithmetic">
+                                    <field name="OP">/</field>
+                                    <value name="A">
+                                      <shadow type="math_number">
+                                        <field name="NUM">1</field>
+                                      </shadow>
+                                      <block type="thymio_get_array">
+                                        <field name="VAR">Neurones</field>
+                                        <value name="INDEX">
+                                          <shadow type="math_number">
+                                            <field name="NUM">0</field>
+                                          </shadow>
+                                          <block type="math_number">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <shadow type="math_number">
+                                        <field name="NUM">1</field>
+                                      </shadow>
+                                      <block type="math_number">
+                                        <field name="NUM">15</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE5">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE6">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="CIRCLE7">
+                                  <shadow type="math_number">
+                                    <field name="NUM">32</field>
+                                  </shadow>
+                                  <block type="math_number">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
+</ThymioBlockly>
+</toolsPlugins>
+</node>
+
+</network>
